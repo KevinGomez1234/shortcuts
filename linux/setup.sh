@@ -1,5 +1,4 @@
 #!/bin/bash
-#Github aliases
 setupGithubAliases() {
     if [ -x "$(command -v git)" ]; 
     then        
@@ -9,6 +8,9 @@ setupGithubAliases() {
         printf "git editcommit <message> edits the previous commit message. You can also add staged \n"
         git config --global alias.editcommit '!f() { if [ ! -z "$1" ] ; then git commit --amend -m $1; else git commit --amend --no-edit; fi }; f'
         git config --global alias.hist '!git log --oneline --decorate --graph'
+        git config --global alias.discard '!git reset --hard HEAD'
+        git config --global alias.s '!git status'
+        git config --global alias.sw '!git switch'
     else
         printf 'Git is not installed on this machine or current user [%s] does not have permission to execute...\n' "$(whoami)"
     fi
