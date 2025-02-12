@@ -8,6 +8,7 @@ setupGithubAliases() {
         git config --global alias.ac '!f() { git add -A && git commit -m "$1"; }; f'
         printf "git editcommit <message> edits the previous commit message. You can also add staged \n"
         git config --global alias.editcommit '!f() { if [ ! -z "$1" ] ; then git commit --amend -m $1; else git commit --amend --no-edit; fi }; f'
+        git config --global alias.hist '!git log --oneline --decorate --graph'
     else
         printf 'Git is not installed on this machine or current user [%s] does not have permission to execute...\n' "$(whoami)"
     fi
